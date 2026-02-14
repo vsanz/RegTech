@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RegTech Control Center</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>RegTech Control Center</h1>
+      <p>
+        Track compliance controls, monitor status, and maintain an auditable
+        trail of remediation actions.
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h2>Add Compliance Control</h2>
+        <form id="control-form">
+          <label>
+            Control ID
+            <input id="control-id" name="id" placeholder="e.g. AML-101" required />
+          </label>
+
+          <label>
+            Control Name
+            <input id="control-name" name="name" placeholder="e.g. Enhanced KYC Review" required />
+          </label>
+
+          <label>
+            Owner Team
+            <input id="control-owner" name="owner" placeholder="e.g. Risk Ops" required />
+          </label>
+
+          <label>
+            Status
+            <select id="control-status" name="status" required>
+              <option value="Compliant">Compliant</option>
+              <option value="At Risk">At Risk</option>
+              <option value="Non-Compliant">Non-Compliant</option>
+            </select>
+          </label>
+
+          <label>
+            Notes
+            <textarea
+              id="control-notes"
+              name="notes"
+              rows="3"
+              placeholder="Optional details for auditors"
+            ></textarea>
+          </label>
+
+          <button type="submit">Save Control</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>Controls Registry</h2>
+          <button id="clear-controls" class="secondary" type="button">Clear All</button>
+        </div>
+
+        <div class="stats" id="stats"></div>
+
+        <ul id="controls-list" class="controls-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <template id="control-item-template">
+      <li class="control-item">
+        <div class="control-main">
+          <strong class="control-title"></strong>
+          <span class="pill"></span>
+        </div>
+        <p class="control-meta"></p>
+        <p class="control-notes"></p>
+        <button class="danger" type="button">Delete</button>
+      </li>
+    </template>
+
+    <footer>
+      <small>Built for RegTech workflows • Data stored locally in your browser</small>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
